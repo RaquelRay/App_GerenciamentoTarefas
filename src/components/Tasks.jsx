@@ -1,17 +1,12 @@
-import {
-  ChevronRightIcon,
-  DeleteIcon,
-  Trash2Icon,
-  TrashIcon,
-} from "lucide-react";
+import { ChevronRightIcon, Trash2Icon } from "lucide-react";
 
-function Tasks(props) {
+function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
   return (
     <ul className="space-y-4 p-6 bg-slate-200 rounded-md shadow">
-      {props.tasks.map((task) => (
+      {tasks.map((task) => (
         <li key={task.id} className="flex gap-2">
           <button
-            onClick={() => props.onTaskClick(task.id)}
+            onClick={() => onTaskClick(task.id)}
             className={`bg-slate-400 text-left text-white p-2 rounded=md w-full ${task.isCompleted && "line-through"}`}
           >
             {task.title}
@@ -20,7 +15,7 @@ function Tasks(props) {
             <ChevronRightIcon />
           </button>
           <button
-            onClick={() => props.onDeleteTaskClick(task.id)}
+            onClick={() => onDeleteTaskClick(task.id)}
             className="bg-slate-400 p-2 rounded-md text-white"
           >
             <Trash2Icon />
